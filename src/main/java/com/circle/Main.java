@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            CharStream expression = CharStreams.fromString("firstName = 'mickey' & lastName = 'mouse'");
+            CharStream expression = CharStreams.fromString("person.firstName = 'mickey' & person.lastName != 'mouse'");
             SearchLexer lexer = new SearchLexer(expression);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             SearchParser parser = new SearchParser(tokens);
@@ -44,7 +44,7 @@ public class Main {
         }
 
         public void enterComparison_expr(SearchParser.Comparison_exprContext ctx) {
-            System.out.print("attribute: " + ctx.logical_entity().getText());
+            System.out.print("family.attribute: " + ctx.key_entity().getText());
             System.out.print(", operator:  " + ctx.comp_operator().getText());
             System.out.println(", value:     " + ctx.value_entity().getText());
         }
@@ -66,11 +66,11 @@ public class Main {
 
         }
 
-        public void enterLogical_entity(SearchParser.Logical_entityContext ctx) {
+        public void enterKey_entity(SearchParser.Key_entityContext ctx) {
 
         }
 
-        public void exitLogical_entity(SearchParser.Logical_entityContext ctx) {
+        public void exitKey_entity(SearchParser.Key_entityContext ctx) {
 
         }
 

@@ -13,6 +13,8 @@ STRINGLITERAL : '\'' (~'\'')* '\'' ;
 
 IDENTIFIER : [a-zA-Z_][a-zA-Z_0-9]* ;
 
+DOT: '.';
+
 COMMENT : '//' .+? ('\n'|EOF) -> skip ;
 
 WS : [ \r\t\u000C\n]+ -> skip ;
@@ -24,12 +26,10 @@ logical_expr
     | logical_expr OR logical_expr
     | comparison_expr
     | LPAREN logical_expr RPAREN
-    | value_entity
-    | logical_entity
     ;
 
 comparison_expr
-    : logical_entity comp_operator value_entity
+    : key_entity comp_operator value_entity
     | LPAREN comparison_expr RPAREN
     ;
 
@@ -42,6 +42,6 @@ value_entity
     : STRINGLITERAL
     ;
 
-logical_entity
-    : IDENTIFIER
+key_entity
+    : IDENTIFIER DOT IDENTIFIER // family.attribute
     ;
