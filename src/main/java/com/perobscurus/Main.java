@@ -1,8 +1,8 @@
-package com.circle;
+package com.perobscurus;
 
-import com.circle.entities.SearchLexer;
-import com.circle.entities.SearchListener;
-import com.circle.entities.SearchParser;
+import com.perobscurus.entities.SearchLexer;
+import com.perobscurus.entities.SearchListener;
+import com.perobscurus.entities.SearchParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
